@@ -1,0 +1,13 @@
+## Interface: 73000
+## Author: Nonus - https://github.com/Nonus
+## Title: |cffFA2384ya|rBars
+## Version: 1.0
+## Dependencies: yaCore, yaMedia
+
+cfg.lua
+elements\ActionBarsLib.lua
+core.lua
+elements\RaidMark.lua
+elements\ButtonsStyler.lua
+elements\HoverBind.lua
+elements\RangeCheck.lua
