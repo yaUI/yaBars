@@ -1,10 +1,10 @@
 -- Huge props to Nightcracker for coming up with this version of KeyBound!
 if IsAddOnLoaded("Dominos") then return end
-local yaBars = CreateFrame("Frame","yaBars")
+local vBars = CreateFrame("Frame","vBars")
 local bind, localmacros = CreateFrame("Frame", "ncHoverBind", UIParent), 0
 
 -- SLASH COMMAND
-yaBars.MouseOverBind = function()
+vBars.MouseOverBind = function()
 	if InCombatLockdown() then print("You can't bind keys in combat.") return end
 	if not bind.loaded then
 		local find = string.find
@@ -329,6 +329,6 @@ yaBars.MouseOverBind = function()
 		end
 	end
 end
-SlashCmdList.MOUSEOVERBIND = function() yaBars.MouseOverBind() end
+SlashCmdList.MOUSEOVERBIND = function() vBars.MouseOverBind() end
 SLASH_MOUSEOVERBIND1 = "/hb"
 SLASH_MOUSEOVERBIND2 = "/kb"

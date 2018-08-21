@@ -1,26 +1,27 @@
 local addon, ns = ...
-local E, M = unpack(yaCore);
+local E, M = unpack(vCore);
 local cfg = ns.cfg
-local yaB = CreateFrame("Frame")
+local vB = CreateFrame("Frame")
+--------------
 
 ---- Addon functions
 local myclass = select(2, UnitClass("player"))
 
 -- holder creating func
-yaB.CreateHolder = function(name, pos)
+vB.CreateHolder = function(name, pos)
 	local bar = CreateFrame("Frame", name, UIParent, "SecureHandlerStateTemplate")
 	bar:SetPoint(pos.a, pos.x, pos.y)
 	bar:SetFrameStrata("MEDIUM")
 	return bar
-end 
+end
 
 -- I always wanted to have my personal death star to destroy stuff!
-local DeathStar = yaB.CreateHolder("DeathStar", {a="TOP", x=0, y=100})
+local DeathStar = vB.CreateHolder("DeathStar", {a="TOP", x=0, y=100})
 DeathStar:Hide()
 
 -- style function for bars
---yaB.SetBar = function(bar, btn, num, orient, rows, visnum, bsize, spacing)
-yaB.SetBar = function(bar, btn, num, cfgn)
+--vB.SetBar = function(bar, btn, num, orient, rows, visnum, bsize, spacing)
+vB.SetBar = function(bar, btn, num, cfgn)
 	local orient, rows, visnum, bsize, spacing = cfg.bars[cfgn].orientation, cfg.bars[cfgn].rows, cfg.bars[cfgn].buttons, cfg.bars[cfgn].button_size, cfg.bars[cfgn].button_spacing
 	local pad = spacing or cfg.spacing
 	local first_row_num = math.floor(visnum/rows)
@@ -35,6 +36,7 @@ yaB.SetBar = function(bar, btn, num, cfgn)
 		button:ClearAllPoints()
 		if i == 1 then
 			button:SetPoint("TOPLEFT", bar, 0, 0)
+			button:SetPoint("BOTTOMLEFT", bar, "TOPLEFT", 0, bsize * -1)
 		else
 			local previous = _G[btn..i-1]
 
@@ -63,7 +65,7 @@ yaB.SetBar = function(bar, btn, num, cfgn)
 					end
 				end
 			end
-			if i > visnum then 
+			if i > visnum then
 				button:SetParent(DeathStar)
 			end
 		end
@@ -88,14 +90,14 @@ yaB.SetBar = function(bar, btn, num, cfgn)
 end
 
 -- modified styling function for Extra Action Bar
-yaB.SetExtraBar = function(bar, bname, orient, rows, visnum, bsize, spacing)
+vB.SetExtraBar = function(bar, bname, orient, rows, visnum, bsize, spacing)
 	local pad = spacing or cfg.spacing
 	local first_row_num = math.floor(visnum/rows)
 	for i = 13, 24 do
 		local btn = CreateFrame("CheckButton", bname..(i-12), UIParent, "ActionBarButtonTemplate")
 		btn:SetAttribute("action", i)
 		btn:SetID(i)
-		
+
 		--btn:SetAttribute("showgrid", 1)
 		--btn:SetAttribute("statehidden", nil)
 		--btn:ClearAllPoints()
@@ -129,7 +131,7 @@ yaB.SetExtraBar = function(bar, bname, orient, rows, visnum, bsize, spacing)
 					end
 				end
 			end
- 			if i > visnum+12 then 
+ 			if i > visnum+12 then
 				btn:SetParent(DeathStar)
 			end
 		end
@@ -154,7 +156,7 @@ yaB.SetExtraBar = function(bar, bname, orient, rows, visnum, bsize, spacing)
 end
 
 -- mouseover visibility condition
-yaB.SetBarAlpha = function(bar,button,num,cfgn)
+vB.SetBarAlpha = function(bar,button,num,cfgn)
 	local switch, baralpha, fadealpha = cfg.bars[cfgn].show_on_mouseover, cfg.bars[cfgn].bar_alpha, cfg.bars[cfgn].fadeout_alpha
 	if switch then
 		local function lighton(alpha)
@@ -164,10 +166,10 @@ yaB.SetBarAlpha = function(bar,button,num,cfgn)
 				pb:SetAlpha(alpha)
 			end
 		  end
-		end    
+		end
 		bar:EnableMouse(true)
 		bar:SetScript("OnEnter", function(self) lighton(1) end)
-		bar:SetScript("OnLeave", function(self) lighton(fadealpha or 0) end)  
+		bar:SetScript("OnLeave", function(self) lighton(fadealpha or 0) end)
 		for i=1, num do
 		  local pb = _G[button..i]
 		  pb:SetAlpha(fadealpha or 0)
@@ -179,10 +181,10 @@ yaB.SetBarAlpha = function(bar,button,num,cfgn)
 end
 
 -- visibility condition
-yaB.SetVisibility = function(n,bar)
+vB.SetVisibility = function(n,bar)
 	local ncfg = cfg.bars[n]
-	if ncfg.hide_bar then 
-		bar:Hide() 
+	if ncfg.hide_bar then
+		bar:Hide()
 	elseif ncfg.custom_visibility_macro then
 		RegisterStateDriver(bar, "visibility", ncfg.custom_visibility_macro)
 		return
@@ -206,7 +208,7 @@ yaB.SetVisibility = function(n,bar)
 	end
 end
 
-yaB.SetStanceBar = function(bar, btn, num)
+vB.SetStanceBar = function(bar, btn, num)
 	local orient, rows, visnum, bsize, spacing = cfg.bars["StanceBar"].orientation, cfg.bars["StanceBar"].rows, cfg.bars["StanceBar"].buttons, cfg.bars["StanceBar"].button_size, cfg.bars["StanceBar"].button_spacing
 	local buttonList = {}
 	local pad = spacing or cfg.spacing
@@ -217,7 +219,7 @@ yaB.SetStanceBar = function(bar, btn, num)
 		bar:SetWidth(bsize)
 		bar:SetHeight(bsize*visnum + pad*(visnum-1))
 	end
-	
+
 	for i=1, num do
 		local button = _G[btn..i]
 		table.insert(buttonList, button) --add the button object to the list
@@ -243,4 +245,4 @@ yaB.SetStanceBar = function(bar, btn, num)
 	end
 end
 
-ns.yaB = yaB
+ns.vB = vB

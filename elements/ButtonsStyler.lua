@@ -1,5 +1,7 @@
 local addon, ns = ...
 local cfg = ns.cfg
+--------------
+
 local _G = _G
 
 local function SetIconTexture(self, crop)
@@ -9,7 +11,7 @@ local function SetIconTexture(self, crop)
 end
 
 local function SetNormalTexture(self)
-	self:SetTexture(cfg.yaB.media.textures_normal)
+	self:SetTexture(cfg.vB.media.textures_normal)
 	self:SetPoint("TOPLEFT")
 	self:SetPoint("BOTTOMRIGHT")
 	self:SetVertexColor(unpack(cfg.buttons.colors.normal))
@@ -17,18 +19,18 @@ end
 
 local function SetPushedTexture(self)
 	if self then											-------- (WTF???) FIX THIS 
-		self:SetTexture(cfg.yaB.media.textures_pushed)
+		self:SetTexture(cfg.vB.media.textures_pushed)
 		self:SetVertexColor(unpack(cfg.buttons.colors.pushed))
 	end
 end
 
 local function SetHighlightTexture(self)
-	self:SetTexture(cfg.yaB.media.textures_normal)
+	self:SetTexture(cfg.vB.media.textures_normal)
 	self:SetVertexColor(unpack(cfg.buttons.colors.highlight))
 end
 
 local function SetCheckedTexture(self)
-	self:SetTexture(cfg.yaB.media.textures_normal)
+	self:SetTexture(cfg.vB.media.textures_normal)
 	self:SetVertexColor(unpack(cfg.buttons.colors.checked))
 end
 
@@ -48,7 +50,7 @@ local function CreateBG(bu)
 	bu.bg:SetFrameLevel(bu:GetFrameLevel()-1)
 
 	local t = bu.bg:CreateTexture(nil,"BACKGROUND")
-	t:SetTexture(cfg.yaB.media.textures_btbg)
+	t:SetTexture(cfg.vB.media.textures_btbg)
 	t:SetAllPoints(bu)
 	t:SetVertexColor(cfg.buttons.colors.normal.r, cfg.buttons.colors.normal.g, cfg.buttons.colors.normal.b,.3)
 	bu.bg:SetBackdropColor(cfg.buttons.colors.normal.r, cfg.buttons.colors.normal.g, cfg.buttons.colors.normal.b)
@@ -81,16 +83,16 @@ local function ActionButtons(self)
 		--fbg.Show = function() return end
 	end
 	nt:SetVertexColor(cfg.buttons.colors.normal.r, cfg.buttons.colors.normal.g, cfg.buttons.colors.normal.b,1)
-    ho:SetFont(cfg.yaB.media.button_font, cfg.buttons.hotkey_font_size, "THINOUTLINE")
+    ho:SetFont(cfg.vB.media.button_font, cfg.buttons.hotkey_font_size, "THINOUTLINE")
 	ho:ClearAllPoints()
 	ho:SetPoint("TOPRIGHT")
 	-- show/hide macro name, adjust font
     if not cfg.buttons.hide_macro_name then
-		if mn then mn:SetFont(cfg.yaB.media.button_font, cfg.buttons.name_font_size, "THINOUTLINE") end
+		if mn then mn:SetFont(cfg.vB.media.button_font, cfg.buttons.name_font_size, "THINOUTLINE") end
     else
 		if mn then mn:Hide() end
     end
-    co:SetFont(cfg.yaB.media.button_font, cfg.buttons.count_font_size, "THINOUTLINE")
+    co:SetFont(cfg.vB.media.button_font, cfg.buttons.count_font_size, "THINOUTLINE")
 	SetTextures(self, 1)
     -- cut the border of the icons
     ic:SetTexCoord(0.1,0.9,0.1,0.9)
@@ -133,14 +135,14 @@ end
 --[[  function VehicleButtons(self)
 	for i=1, VEHICLE_MAX_ACTIONBUTTONS do
 		local hk = _G["VehicleMenuBarActionButton"..i.."HotKey"]
-	hk:SetFont(cfg.yaB.media.button_font, cfg.buttons.hotkey_font_size, "THINOUTLINE")
+	hk:SetFont(cfg.vB.media.button_font, cfg.buttons.hotkey_font_size, "THINOUTLINE")
 	hk.SetPoint = hk:SetPoint("TOPLEFT")
 	end
 end ]]
 
  -- Totem bar + flyout multicast buttons
 --[[ local function MultiCastSlotButtons(self,slot)
-	self:SetNormalTexture(cfg.yaB.media.textures_normal)
+	self:SetNormalTexture(cfg.vB.media.textures_normal)
 	local tex = self:GetNormalTexture()
 	tex:SetVertexColor(cfg.buttons.colors.normal.r, cfg.buttons.colors.normal.g, cfg.buttons.colors.normal.b)
 	SetHighlightTexture(self:GetHighlightTexture())
@@ -153,13 +155,13 @@ local function MultiCastSpellButtons(self)
 	_G[self:GetName().."Highlight"]:Hide()
 	SetTextures(self)
 	local hk = _G[self:GetName().."HotKey"]
-	hk:SetFont(cfg.yaB.media.button_font, cfg.buttons.hotkey_font_size, "THINOUTLINE")
+	hk:SetFont(cfg.vB.media.button_font, cfg.buttons.hotkey_font_size, "THINOUTLINE")
 	hk:SetPoint("TOPRIGHT")
 end 
 local function FlyoutSlotSpells(self, slot, ...)
 	local numSpells = select("#", ...) + 1
 	for i = 1, numSpells do
-		self.buttons[i]:SetNormalTexture(cfg.yaB.media.textures_normal)
+		self.buttons[i]:SetNormalTexture(cfg.vB.media.textures_normal)
 		local it, ht, nt = self.buttons[i]:GetRegions()
 		if i ~= 1 then
 			SetIconTexture(it, 1)
@@ -173,7 +175,7 @@ local function FlyoutSlotSpells(self, slot, ...)
 local function FlyoutPageSpells(self)
 	for i, spellId in next, TOTEM_MULTI_CAST_SUMMON_SPELLS do
 		if IsSpellKnown(spellId) then
-			self.buttons[i]:SetNormalTexture(cfg.yaB.media.textures_normal)
+			self.buttons[i]:SetNormalTexture(cfg.vB.media.textures_normal)
 			local it, ht, nt = self.buttons[i]:GetRegions()
 			SetIconTexture(it, 1)
 			SetHighlightTexture(ht)
@@ -213,7 +215,7 @@ local function SetupFlyoutButton()
 		if _G["SpellFlyoutButton"..i] then
 			local self = _G["SpellFlyoutButton"..i]
 			local tex = self:GetNormalTexture()
-			self:SetNormalTexture(cfg.yaB.media.textures_normal)
+			self:SetNormalTexture(cfg.vB.media.textures_normal)
 			tex:SetVertexColor(cfg.buttons.colors.normal.r,cfg.buttons.colors.normal.g,cfg.buttons.colors.normal.b,1)
 			SetTextures(self)
 		end
