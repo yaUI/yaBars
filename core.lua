@@ -34,32 +34,32 @@ f:SetScript("OnEvent", function()
 		local btn = _G[format("ActionButton%d", i)]
 		btn:SetAttribute("showgrid", 1)
 		btn:SetAttribute("statehidden", nil)
-		ActionButton_ShowGrid(btn)
+		ActionButton_ShowGrid(btn, ACTION_BUTTON_SHOW_GRID_REASON_EVENT)
 
 		btn = _G[format("MultiBarRightButton%d", i)]
 		btn:SetAttribute("showgrid", 1)
 		btn:SetAttribute("statehidden", nil)
-		ActionButton_ShowGrid(btn)
+		ActionButton_ShowGrid(btn, ACTION_BUTTON_SHOW_GRID_REASON_EVENT)
 
 		btn = _G[format("MultiBarBottomRightButton%d", i)]
 		btn:SetAttribute("showgrid", 1)
 		btn:SetAttribute("statehidden", nil)
-		ActionButton_ShowGrid(btn)
+		ActionButton_ShowGrid(btn, ACTION_BUTTON_SHOW_GRID_REASON_EVENT)
 
 		btn = _G[format("MultiBarLeftButton%d", i)]
 		btn:SetAttribute("showgrid", 1)
 		btn:SetAttribute("statehidden", nil)
-		ActionButton_ShowGrid(btn)
+		ActionButton_ShowGrid(btn, ACTION_BUTTON_SHOW_GRID_REASON_EVENT)
 
 		btn = _G[format("MultiBarBottomLeftButton%d", i)]
 		btn:SetAttribute("showgrid", 1)
 		btn:SetAttribute("statehidden", nil)
-		ActionButton_ShowGrid(btn)
+		ActionButton_ShowGrid(btn, ACTION_BUTTON_SHOW_GRID_REASON_EVENT)
 
 		btn = _G[format("ExtraBarButton%d", i)]
 		btn:SetAttribute("showgrid", 1)
 		btn:SetAttribute("statehidden", nil)
-		ActionButton_ShowGrid(btn)
+		ActionButton_ShowGrid(btn, ACTION_BUTTON_SHOW_GRID_REASON_EVENT)
 	end
 		--SHOW_MULTI_ACTIONBAR_1 = 1
 		--SHOW_MULTI_ACTIONBAR_2 = 1
