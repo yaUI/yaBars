@@ -1,8 +1,8 @@
-## Interface: 73000
-## Author: Nonus - https://github.com/Nonus
-## Title: |cffFA2384v|rBars
+## Interface: 80000
+## Author: Lofbergio - https://github.com/lofbergio
+## Title: |cffFA2384ya|rBars
 ## Version: 1.0
-## Dependencies: vCore, vMedia
+## Dependencies: yaCore, yaMedia
 
 cfg.lua
 elements\ActionBarsLib.lua

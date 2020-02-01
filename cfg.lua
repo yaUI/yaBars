@@ -1,15 +1,15 @@
 local addon, ns = ...
-local E, M = unpack(vCore);
+local E, M = unpack(yaCore);
 local cfg = CreateFrame("Frame")
 --------------
 
 --ActionBars config
-cfg.vB = {
+cfg.yaB = {
 	size = 30,						-- setting up default buttons size
 	spacing = 2, 					-- spacing between buttons
 	media = {						-- MEDIA
-		textures_normal = M:Fetch("vui", "baricon"),
-		textures_pushed = M:Fetch("vui", "baricon"),
+		textures_normal = M:Fetch("yaui", "baricon"),
+		textures_pushed = M:Fetch("yaui", "baricon"),
 		textures_btbg = "Interface\\Buttons\\WHITE8x8",
 		button_font = M:Fetch("font", "Roboto"),
 		},
@@ -20,7 +20,7 @@ cfg.bars = {
 	hide_bar = false,				show_in_combat = false,
 	show_on_mouseover = false,		bar_alpha = 1,				fadeout_alpha = 0.5,
 	orientation = "HORIZONTAL",		rows = 1,					buttons = 12,
-	button_size = cfg.vB.size,		button_spacing = cfg.vB.spacing,
+	button_size = cfg.yaB.size,		button_spacing = cfg.yaB.spacing,
 	position = {a="BOTTOM", x=0, y=164},
 	custom_visibility_macro = false	-- set a custom visibility macro for this bar or 'false' to disable
 									-- (e.g. "[petbattle][overridebar][vehicleui][possessbar,@vehicle,exists]hide;show")
@@ -29,7 +29,7 @@ cfg.bars = {
 	hide_bar = false,				show_in_combat = false,
 	show_on_mouseover = false,		bar_alpha = 1,				fadeout_alpha = 0.5,
 	orientation = "HORIZONTAL",		rows = 2,					buttons = 12,
-	button_size = cfg.vB.size-2,	button_spacing = cfg.vB.spacing,
+	button_size = cfg.yaB.size-2,	button_spacing = cfg.yaB.spacing,
 	position = {a="BOTTOM", x=-96, y=50},
 	custom_visibility_macro = false
 	},
@@ -37,7 +37,7 @@ cfg.bars = {
 	hide_bar = false,				show_in_combat = false,
 	show_on_mouseover = false,		bar_alpha = 1,				fadeout_alpha = 0.5,
 	orientation = "HORIZONTAL",		rows = 2,					buttons = 12,
-	button_size = cfg.vB.size-2,	button_spacing = cfg.vB.spacing,
+	button_size = cfg.yaB.size-2,	button_spacing = cfg.yaB.spacing,
 	position = {a="BOTTOM", x=96, y= 50},
 	custom_visibility_macro = false
 	},
@@ -45,7 +45,7 @@ cfg.bars = {
 	hide_bar = false,				show_in_combat = false,
 	show_on_mouseover = false,		bar_alpha = 1,				fadeout_alpha = 0.5,
 	orientation = "HORIZONTAL",		rows = 1,					buttons = 12,
-	button_size = cfg.vB.size,		button_spacing = cfg.vB.spacing,
+	button_size = cfg.yaB.size,		button_spacing = cfg.yaB.spacing,
 	position = {a="BOTTOM", x=0, y= 129},
 	custom_visibility_macro = false
 	},
@@ -53,7 +53,7 @@ cfg.bars = {
 	hide_bar = true,				show_in_combat = false,
 	show_on_mouseover = false,		bar_alpha = 1,				fadeout_alpha = 0.5,
 	orientation = "HORIZONTAL",		rows = 1,					buttons = 12,
-	button_size = 30,				button_spacing = cfg.vB.spacing,
+	button_size = 30,				button_spacing = cfg.yaB.spacing,
 	position = {a="BOTTOM", x=0, y=-119},
 	custom_visibility_macro = false
 	},
@@ -61,7 +61,7 @@ cfg.bars = {
 	hide_bar = true,				show_in_combat = false,
 	show_on_mouseover = false,		bar_alpha = 1,				fadeout_alpha = 0.5,
 	orientation = "HORIZONTAL",		rows = 1,					buttons = 12,
-	button_size = cfg.vB.size,		button_spacing = cfg.vB.spacing,
+	button_size = cfg.yaB.size,		button_spacing = cfg.yaB.spacing,
 	position = {a="BOTTOM", x=0, y=-119},
 	custom_visibility_macro = false
 	},
@@ -69,7 +69,7 @@ cfg.bars = {
 	hide_bar = false,				show_in_combat = false,		scale = 0.7,
 	show_on_mouseover = true,		bar_alpha = 1,				fadeout_alpha = 0.3,
 	orientation = "HORIZONTAL",		rows = 1,					buttons = 6,
-	button_size = cfg.vB.size,		button_spacing = cfg.vB.spacing,
+	button_size = cfg.yaB.size,		button_spacing = cfg.yaB.spacing,
 	position = {a="BOTTOM", x=-178, y=282},
 	custom_visibility_macro = false
 	},
@@ -77,7 +77,7 @@ cfg.bars = {
 	hide_bar = false,				show_in_combat = false,		scale = 0.7,
 	show_on_mouseover = true,		bar_alpha = 1,				fadeout_alpha = 0.3,
 	orientation = "HORIZONTAL",		rows = 1,					buttons = NUM_PET_ACTION_SLOTS,
-	button_size = cfg.vB.size,		button_spacing = cfg.vB.spacing,
+	button_size = cfg.yaB.size,		button_spacing = cfg.yaB.spacing,
 	position = {a="BOTTOM", x=90, y=225},
 	custom_visibility_macro = false
 	},
@@ -108,7 +108,7 @@ cfg.bars = {
 	hide = true,					disable_in_combat = true,
 	show_on_mouseover = true,		bar_alpha = 1,				fadeout_alpha = 0.5,
 	orientation = "VERTICAL",		rows = 1,
-	button_size = 23,				button_spacing = cfg.vB.spacing,
+	button_size = 23,				button_spacing = cfg.yaB.spacing,
 	position = {a="RIGHT", x=-10, y=-312},
 	},
 }

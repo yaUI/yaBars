@@ -1,14 +1,14 @@
 local addon, ns = ...
-local E, M = unpack(vCore);
+local E, M = unpack(yaCore);
 local cfg = ns.cfg
-local vB = CreateFrame("Frame")
+local yaB = CreateFrame("Frame")
 --------------
 
 ---- Addon functions
 local myclass = select(2, UnitClass("player"))
 
 -- holder creating func
-vB.CreateHolder = function(name, pos)
+yaB.CreateHolder = function(name, pos)
 	local bar = CreateFrame("Frame", name, UIParent, "SecureHandlerStateTemplate")
 	bar:SetPoint(pos.a, pos.x, pos.y)
 	bar:SetFrameStrata("MEDIUM")
@@ -16,12 +16,12 @@ vB.CreateHolder = function(name, pos)
 end
 
 -- I always wanted to have my personal death star to destroy stuff!
-local DeathStar = vB.CreateHolder("DeathStar", {a="TOP", x=0, y=100})
+local DeathStar = yaB.CreateHolder("DeathStar", {a="TOP", x=0, y=100})
 DeathStar:Hide()
 
 -- style function for bars
---vB.SetBar = function(bar, btn, num, orient, rows, visnum, bsize, spacing)
-vB.SetBar = function(bar, btn, num, cfgn)
+--yaB.SetBar = function(bar, btn, num, orient, rows, visnum, bsize, spacing)
+yaB.SetBar = function(bar, btn, num, cfgn)
 	local orient, rows, visnum, bsize, spacing = cfg.bars[cfgn].orientation, cfg.bars[cfgn].rows, cfg.bars[cfgn].buttons, cfg.bars[cfgn].button_size, cfg.bars[cfgn].button_spacing
 	local pad = spacing or cfg.spacing
 	local first_row_num = math.floor(visnum/rows)
@@ -90,7 +90,7 @@ vB.SetBar = function(bar, btn, num, cfgn)
 end
 
 -- modified styling function for Extra Action Bar
-vB.SetExtraBar = function(bar, bname, orient, rows, visnum, bsize, spacing)
+yaB.SetExtraBar = function(bar, bname, orient, rows, visnum, bsize, spacing)
 	local pad = spacing or cfg.spacing
 	local first_row_num = math.floor(visnum/rows)
 	for i = 13, 24 do
@@ -156,7 +156,7 @@ vB.SetExtraBar = function(bar, bname, orient, rows, visnum, bsize, spacing)
 end
 
 -- mouseover visibility condition
-vB.SetBarAlpha = function(bar,button,num,cfgn)
+yaB.SetBarAlpha = function(bar,button,num,cfgn)
 	local switch, baralpha, fadealpha = cfg.bars[cfgn].show_on_mouseover, cfg.bars[cfgn].bar_alpha, cfg.bars[cfgn].fadeout_alpha
 	if switch then
 		local function lighton(alpha)
@@ -181,7 +181,7 @@ vB.SetBarAlpha = function(bar,button,num,cfgn)
 end
 
 -- visibility condition
-vB.SetVisibility = function(n,bar)
+yaB.SetVisibility = function(n,bar)
 	local ncfg = cfg.bars[n]
 	if ncfg.hide_bar then
 		bar:Hide()
@@ -208,7 +208,7 @@ vB.SetVisibility = function(n,bar)
 	end
 end
 
-vB.SetStanceBar = function(bar, btn, num)
+yaB.SetStanceBar = function(bar, btn, num)
 	local orient, rows, visnum, bsize, spacing = cfg.bars["StanceBar"].orientation, cfg.bars["StanceBar"].rows, cfg.bars["StanceBar"].buttons, cfg.bars["StanceBar"].button_size, cfg.bars["StanceBar"].button_spacing
 	local buttonList = {}
 	local pad = spacing or cfg.spacing
@@ -245,4 +245,4 @@ vB.SetStanceBar = function(bar, btn, num)
 	end
 end
 
-ns.vB = vB
+ns.yaB = yaB

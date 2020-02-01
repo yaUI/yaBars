@@ -1,10 +1,10 @@
 local addon, ns = ...
 local cfg = ns.cfg
-local vB = ns.vB
+local yaB = ns.yaB
 --------------
 
 -- RaidMark bar
-local raidmarkbar = vB.CreateHolder("RaidIconBar_holder", cfg.bars["RaidIconBar"].position)
+local raidmarkbar = yaB.CreateHolder("RaidIconBar_holder", cfg.bars["RaidIconBar"].position)
 local SetRaidIconButton = function(icon,name,marknum,point,anchor,rpoint,offX,offY,tex,x1,x2,y1,y2)
 	local icon = CreateFrame("Button", name.."Icon", raidmarkbar)
 	icon:SetSize(cfg.bars["RaidIconBar"].button_size,cfg.bars["RaidIconBar"].button_size)
@@ -13,8 +13,8 @@ local SetRaidIconButton = function(icon,name,marknum,point,anchor,rpoint,offX,of
 	icon:GetNormalTexture():SetTexCoord(x1,x2,y1,y2)
 	icon:EnableMouse(true)
 	icon:SetScript("OnClick", function(self) SetRaidTarget("target", 0); SetRaidTarget("target", marknum) end)
-	icon.bd = icon:CreateTexture(cfg.vB.media.textures_normal)
-	icon.bd:SetTexture(cfg.vB.media.textures_normal)
+	icon.bd = icon:CreateTexture(cfg.yaB.media.textures_normal)
+	icon.bd:SetTexture(cfg.yaB.media.textures_normal)
 	icon.bd:SetPoint("TOPLEFT",-1,1)
 	icon.bd:SetPoint("BOTTOMRIGHT",1,-1)
 	icon.bd:SetVertexColor(unpack(cfg.buttons.colors.normal))
@@ -56,7 +56,7 @@ SetRaidIconButton(IconStar,"Star",1,i_point,CircleIcon,i_rpoint,i_offX,i_offY,ic
 SetRaidIconButton(IconClear,"Clear",0,i_point,StarIcon,i_rpoint,i_offX,i_offY,"interface\\glues\\loadingscreens\\dynamicelements",0,0.5,0,0.5)
 
 -- World marker flare bar
-local worldmarkbar = vB.CreateHolder("WorldMarkerBar_holder", cfg.bars["WorldMarkerBar"].position)
+local worldmarkbar = yaB.CreateHolder("WorldMarkerBar_holder", cfg.bars["WorldMarkerBar"].position)
 local SetFlareButton = function(flare,name,flarenum,point,anchor,rpoint,offX,offY,tex,x1,x2,y1,y2)
 	local flare = CreateFrame("Button", name.."Flare", worldmarkbar, "SecureActionButtonTemplate")
 	flare:SetSize(cfg.bars["WorldMarkerBar"].button_size,cfg.bars["WorldMarkerBar"].button_size)
@@ -65,8 +65,8 @@ local SetFlareButton = function(flare,name,flarenum,point,anchor,rpoint,offX,off
 	flare:SetPoint(point, anchor, rpoint, offX, offY)
 	flare:SetAttribute("type", "macro")
 	flare:SetAttribute("macrotext1", "/click CompactRaidFrameManagerDisplayFrameLeaderOptionsRaidWorldMarkerButton\n/click DropDownList1Button"..flarenum)
-	flare.bd = flare:CreateTexture(cfg.vB.media.textures_normal)
-	flare.bd:SetTexture(cfg.vB.media.textures_normal)
+	flare.bd = flare:CreateTexture(cfg.yaB.media.textures_normal)
+	flare.bd:SetTexture(cfg.yaB.media.textures_normal)
 	flare.bd:SetPoint("TOPLEFT",-1,1)
 	flare.bd:SetPoint("BOTTOMRIGHT",1,-1)
 	flare.bd:SetVertexColor(unpack(cfg.buttons.colors.normal))
