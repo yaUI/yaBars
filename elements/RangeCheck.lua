@@ -121,9 +121,35 @@ function tullaRange:PLAYER_LOGIN()
 	end)
 	
 	self.buttonsToUpdate = {}
-	hooksecurefunc('ActionButton_OnUpdate', self.RegisterButton)
-	hooksecurefunc('ActionButton_UpdateUsable', self.OnUpdateButtonUsable)
-	hooksecurefunc('ActionButton_Update', self.OnButtonUpdate)
+	
+	local function actionButton_OnLoad(button)
+			button:SetScript("OnUpdate", nil)
+
+			-- Update is called whenever an action button changes, so we
+			-- check here to we if we need to pay attention to the button anymore
+			hooksecurefunc(button, 'Update', self.OnButtonUpdate)
+			hooksecurefunc(button, 'OnUpdate', self.RegisterButton)
+
+			-- UpdateUsable is called when the button normally changes
+			-- color when unusuable, so we need to reapply our custom coloring
+			hooksecurefunc(button, 'UpdateUsable', self.OnUpdateButtonUsable)
+	end
+
+	-- hook any existing frames that are derived from ActionBarActionButtonMixin
+	local mixin_OnLoad = ActionBarActionButtonMixin.OnLoad
+	local EnumerateFrames = _G.EnumerateFrames
+	local f = EnumerateFrames()
+
+	while f do
+			if f.OnLoad == mixin_OnLoad then
+					actionButton_OnLoad(f)
+			end
+
+			f = EnumerateFrames(f)
+	end
+
+	-- grab later ones, too
+	hooksecurefunc(ActionBarActionButtonMixin, "OnLoad", actionButton_OnLoad)
 end
 
 function tullaRange:PLAYER_LOGOUT()

@@ -36,17 +36,17 @@ cfg.bars = {
 ["Bar3"] = {
 	hide_bar = false,				show_in_combat = false,
 	show_on_mouseover = false,		bar_alpha = 1,				fadeout_alpha = 0.5,
-	orientation = "HORIZONTAL",		rows = 2,					buttons = 12,
-	button_size = cfg.yaB.size-2,	button_spacing = cfg.yaB.spacing,
-	position = {a="BOTTOM", x=96, y= 50},
+	orientation = "HORIZONTAL",		rows = 1,					buttons = 12,
+	button_size = cfg.yaB.size,		button_spacing = cfg.yaB.spacing,
+	position = {a="BOTTOM", x=0, y= 129},
 	custom_visibility_macro = false
 	},
 ["Bar4"] = {
 	hide_bar = false,				show_in_combat = false,
 	show_on_mouseover = false,		bar_alpha = 1,				fadeout_alpha = 0.5,
-	orientation = "HORIZONTAL",		rows = 1,					buttons = 12,
-	button_size = cfg.yaB.size,		button_spacing = cfg.yaB.spacing,
-	position = {a="BOTTOM", x=0, y= 129},
+	orientation = "HORIZONTAL",		rows = 2,					buttons = 12,
+	button_size = cfg.yaB.size-2,	button_spacing = cfg.yaB.spacing,
+	position = {a="BOTTOM", x=96, y= 50},
 	custom_visibility_macro = false
 	},
 ["Bar5"] = {

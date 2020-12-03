@@ -34,32 +34,32 @@ f:SetScript("OnEvent", function()
 		local btn = _G[format("ActionButton%d", i)]
 		btn:SetAttribute("showgrid", 1)
 		btn:SetAttribute("statehidden", nil)
-		ActionButton_ShowGrid(btn, ACTION_BUTTON_SHOW_GRID_REASON_EVENT)
+		btn:ShowGrid(ACTION_BUTTON_SHOW_GRID_REASON_CVAR)
 
 		btn = _G[format("MultiBarRightButton%d", i)]
 		btn:SetAttribute("showgrid", 1)
 		btn:SetAttribute("statehidden", nil)
-		ActionButton_ShowGrid(btn, ACTION_BUTTON_SHOW_GRID_REASON_EVENT)
+		btn:ShowGrid(ACTION_BUTTON_SHOW_GRID_REASON_CVAR)
 
 		btn = _G[format("MultiBarBottomRightButton%d", i)]
 		btn:SetAttribute("showgrid", 1)
 		btn:SetAttribute("statehidden", nil)
-		ActionButton_ShowGrid(btn, ACTION_BUTTON_SHOW_GRID_REASON_EVENT)
+		btn:ShowGrid(ACTION_BUTTON_SHOW_GRID_REASON_CVAR)
 
 		btn = _G[format("MultiBarLeftButton%d", i)]
 		btn:SetAttribute("showgrid", 1)
 		btn:SetAttribute("statehidden", nil)
-		ActionButton_ShowGrid(btn, ACTION_BUTTON_SHOW_GRID_REASON_EVENT)
+		btn:ShowGrid(ACTION_BUTTON_SHOW_GRID_REASON_CVAR)
 
 		btn = _G[format("MultiBarBottomLeftButton%d", i)]
 		btn:SetAttribute("showgrid", 1)
 		btn:SetAttribute("statehidden", nil)
-		ActionButton_ShowGrid(btn, ACTION_BUTTON_SHOW_GRID_REASON_EVENT)
+		btn:ShowGrid(ACTION_BUTTON_SHOW_GRID_REASON_CVAR)
 
 		btn = _G[format("ExtraBarButton%d", i)]
 		btn:SetAttribute("showgrid", 1)
 		btn:SetAttribute("statehidden", nil)
-		ActionButton_ShowGrid(btn, ACTION_BUTTON_SHOW_GRID_REASON_EVENT)
+		btn:ShowGrid(ACTION_BUTTON_SHOW_GRID_REASON_CVAR)
 	end
 		--SHOW_MULTI_ACTIONBAR_1 = 1
 		--SHOW_MULTI_ACTIONBAR_2 = 1
@@ -415,7 +415,7 @@ yaBars_Toggle_Test_Mode = function()
 		insets = {left = 0, right = 0, top = 0, bottom = 0,},}
 	local ShowHolder = function(holder, switch)
 		if not _G[holder:GetName().."_overlay"] then
-			local f = CreateFrame("Frame", holder:GetName().."_overlay")
+			local f = CreateFrame("Frame", holder:GetName().."_overlay", UIParent, "BackdropTemplate")
 			f:SetAllPoints(holder)
 			f:SetBackdrop(backdrop_tab);
 			f:SetBackdropColor(.1,.1,.2,.8)
@@ -458,3 +458,4 @@ yaBars_Toggle_Test_Mode = function()
 end
 SlashCmdList["TESTMODE"] = function() yaBars_Toggle_Test_Mode() end
 SLASH_TESTMODE1 = "/yaB"
+SLASH_TESTMODE2 = "/yaBars"
